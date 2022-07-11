@@ -9,20 +9,20 @@ public class Cinema {
 	
 	private int total_rows;
 	private int total_columns;
-	private List<Seat> available_seats;
+	private List<Seats> available_seats;
 	
 	
-	public Cinema(int total_rows, int total_columns, List<Seat> availableSeats) {
+	public Cinema(int total_rows, int total_columns, List<Seats> availableSeats) {
 		this.total_rows = total_rows;
 		this.total_columns = total_columns;
 		this.available_seats = availableSeats;
 	}
 	
 	public static Cinema getAllSeats(int rows, int columns){
-		List<Seat> seats = new ArrayList<>();
+		List<Seats> seats = new ArrayList<>();
 		for (int row = 1; row <= rows; row++ ) {
 			for (int column = 1; column <= columns; column++){
-				seats.add(new Seat(row, column));
+				seats.add(new Seats(row, column));
 			}
 		}
 		return new Cinema(rows, columns, seats);
@@ -49,12 +49,12 @@ public class Cinema {
 	}
 	
 	@JsonGetter(value = "available_seats")
-	public List<Seat> getAvailableSeats() {
+	public List<Seats> getAvailableSeats() {
 		return available_seats;
 	}
 	
 	
-	public void setAvailableSeats(List<Seat> available_seats) {
+	public void setAvailableSeats(List<Seats> available_seats) {
 		this.available_seats = available_seats;
 	}
 }

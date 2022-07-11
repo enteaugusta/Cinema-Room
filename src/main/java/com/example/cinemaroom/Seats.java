@@ -3,7 +3,7 @@ package com.example.cinemaroom;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import org.springframework.lang.NonNull;
 
-public class Seat {
+public class Seats {
 	
 	@NonNull
 	private int row;
@@ -11,7 +11,7 @@ public class Seat {
 	private int column;
 	
 	
-	public Seat(int row, int column) {
+	public Seats(int row, int column) {
 		this.row = row;
 		this.column = column;
 	}
