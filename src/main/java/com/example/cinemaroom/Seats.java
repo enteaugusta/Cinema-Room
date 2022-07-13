@@ -9,18 +9,17 @@ public class Seats {
 	private int row;
 	@NonNull
 	private int column;
+	private int price;
 	
-	
-	public Seats(int row, int column) {
+	public Seats(int row, int column, int price) {
 		this.row = row;
 		this.column = column;
+		this.price = price;
 	}
-	
 	
 	public int getRow() {
 		return row;
 	}
-	
 	
 	public void setRow(int row) {
 		this.row = row;
@@ -31,8 +30,15 @@ public class Seats {
 		return column;
 	}
 	
-	
 	public void setColumn(int column) {
 		this.column = column;
+	}
+	
+	public int getPrice() {
+		return price;
+	}
+	
+	public void setPrice(int price) {
+		this.price = price;
 	}
 }
