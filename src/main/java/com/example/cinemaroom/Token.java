@@ -8,8 +8,6 @@ public class Token {
 	public Token() {
 	}
 	
-	
-	
 	public Token(UUID token) {
 		this.token = token;
 	}
