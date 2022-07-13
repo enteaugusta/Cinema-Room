@@ -76,7 +76,7 @@ public class Cinema {
 	}
 	
 	
-	public List<Tickets> getOrdered_seats() {
+	public List<Tickets> getOrderedSeats() {
 		return ordered_seats;
 	}
 	

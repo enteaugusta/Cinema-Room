@@ -16,7 +16,7 @@ public class Seats {
 		this.column = column;
 		this.price = price;
 	}
-	
+	@JsonGetter(value = "row")
 	public int getRow() {
 		return row;
 	}
@@ -25,7 +25,7 @@ public class Seats {
 		this.row = row;
 	}
 	
-	@JsonGetter(value = "seat")
+	@JsonGetter(value = "seatnumber")
 	public int getColumn() {
 		return column;
 	}
@@ -34,6 +34,7 @@ public class Seats {
 		this.column = column;
 	}
 	
+	@JsonGetter(value = "price")
 	public int getPrice() {
 		return price;
 	}

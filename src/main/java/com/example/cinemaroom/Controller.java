@@ -1,5 +1,6 @@
 package com.example.cinemaroom;
 
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -39,13 +40,28 @@ public class Controller {
 			Seats availableSeat = cinema.getAvailableSeats().get(i);
 			if (availableSeat.getRow() == seatToBook.getRow() && availableSeat.getColumn() == seatToBook.getColumn()) {
 				Tickets ticket = new Tickets(UUID.randomUUID(), availableSeat);
-				cinema.getOrdered_seats().add(ticket);
+				cinema.getOrderedSeats().add(ticket);
 				cinema.getAvailableSeats().remove(i);
-				return new ResponseEntity<>(availableSeat, HttpStatus.OK);
+				return new ResponseEntity<>(ticket, HttpStatus.OK);
 				
 			}
 		}
 		return new ResponseEntity<>(Map.of("error","The ticket has been already purchased!"), HttpStatus.BAD_REQUEST);
 	}
+	
+	@PostMapping("/return")
+	public ResponseEntity<?> purchaseTicket(@RequestBody Token token) {
+		List<Tickets> tickets = cinema.getOrderedSeats();
+		for (Tickets ticket : tickets) {
+			if (ticket.getUuid().equals(token.getToken())) {
+				tickets.remove(ticket);
+				cinema.getAvailableSeats().add(ticket.getTicket());
+				return new ResponseEntity<>(Map.of("returned_ticket", ticket.getTicket()), HttpStatus.OK);
+				
+			}
+		}
+		return new ResponseEntity<>(Map.of("error", "Wrong token!"), HttpStatus.BAD_REQUEST);
+	}
+	
 	
 }
